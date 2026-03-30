@@ -6,3 +6,77 @@
 @use 'styles/helpers';
 @use 'styles/plugins';
 @use 'styles/custom';
+
+/* Strong global overrides for MDC select overlay widgets */
+.mat-mdc-select-panel,
+.cdk-overlay-pane.mat-mdc-select-panel,
+.mat-mdc-select-panel-above,
+.mat-mdc-select-panel-below,
+.mat-mdc-select-panel.mat-primary {
+  min-width: 180px !important;
+  max-width: 340px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%) !important;
+  border: 1px solid rgba(49, 130, 206, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16), 0 4px 14px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  animation: globalSelectPanelOpen 0.26s cubic-bezier(0.25, 0.8, 0.25, 1) both !important;
+}
+
+.mat-mdc-option {
+  padding: 9px 14px !important;
+  border-radius: 6px !important;
+  font-size: 0.78rem !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.mat-mdc-option:hover {
+  background-color: rgba(66, 133, 244, 0.12) !important;
+  transform: translateX(2px) !important;
+}
+
+.mat-mdc-option.mat-mdc-option-active,
+.mat-mdc-option.mat-selected {
+  background-color: rgba(66, 133, 244, 0.16) !important;
+  color: #164c8c !important;
+  font-weight: 600 !important;
+}
+
+@keyframes globalSelectPanelOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Standard panel dimensions with optional scroll when needed */
+.mat-mdc-select-panel,
+.cdk-overlay-pane.mat-mdc-select-panel {
+  max-height: 240px !important;
+  min-height: 180px !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.mat-mdc-select-panel mdc-list,
+.mat-mdc-select-panel .mdc-list,
+.cdk-overlay-pane.mat-mdc-select-panel .mdc-list {
+  max-height: 220px !important;
+  overflow-y: auto !important;
+}
+
+.mat-mdc-select-panel::-webkit-scrollbar,
+.cdk-overlay-pane.mat-mdc-select-panel::-webkit-scrollbar {
+  width: 0 !important;
+  display: none !important;
+}
+
+.mat-mdc-select-panel,
+.cdk-overlay-pane.mat-mdc-select-panel {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}

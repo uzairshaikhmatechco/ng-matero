@@ -45,6 +45,7 @@ export class LoginService {
   }
 
   refresh(params: Record<string, any>) {
+    debugger;
     return this.http.post<Token>('/api/v1/account/refresh-token', params);
   }
 

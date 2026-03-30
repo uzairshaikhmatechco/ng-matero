@@ -207,5 +207,82 @@ mat-form-field {
   transform: var(--mat-mdc-form-field-label-transform) !important;
 }
 
+/* --------------------------------------------- */
+/* SELECT PANEL & DROPDOWN STYLING               */
+/* --------------------------------------------- */
 
+/* Select panel container */
+:host ::ng-deep .mat-mdc-select-panel {
+  background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  animation: slideDown 0.3s ease-out !important;
+}
+
+/* Menu surface styling */
+:host ::ng-deep .mdc-menu-surface {
+  border-radius: 12px !important;
+}
+
+:host ::ng-deep .mdc-menu-surface--open {
+  background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%) !important;
+  border-radius: 12px !important;
+}
+
+/* Individual option styling */
+:host ::ng-deep .mat-mdc-option {
+  padding: 8px 12px !important;
+  margin: 2px 4px !important;
+  border-radius: 6px !important;
+  font-size: 0.75rem !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Option hover state */
+:host ::ng-deep .mat-mdc-option:hover {
+  background-color: rgba(66, 133, 244, 0.08) !important;
+  transform: translateX(2px);
+}
+
+/* Option active/selected state */
+:host ::ng-deep .mat-mdc-option.mat-selected {
+  background-color: rgba(66, 133, 244, 0.12) !important;
+  color: #4285f4 !important;
+  font-weight: 500 !important;
+}
+
+:host ::ng-deep .mat-mdc-option-active {
+  background-color: rgba(66, 133, 244, 0.08) !important;
+}
+
+/* Option text styling */
+:host ::ng-deep .mdc-list-item__primary-text {
+  color: #333 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.3px;
+}
+
+/* Pseudo checkbox styling */
+:host ::ng-deep .mat-pseudo-checkbox {
+  border-color: #4285f4 !important;
+  border-radius: 3px !important;
+}
+
+:host ::ng-deep .mat-pseudo-checkbox-checked {
+  background-color: #4285f4 !important;
+  border-color: #4285f4 !important;
+}
+
+/* Animation for panel slide down */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
