@@ -117,14 +117,23 @@ mat-form-field {
 }
 
 /* Input & select */
-:host ::ng-deep .mdc-text-field--outlined,
-:host ::ng-deep .mat-mdc-select {
+:host ::ng-deep .mdc-text-field--outlined {
   height: 36px !important;
   min-height: 36px !important;
   padding: 0 !important;
   display: flex !important;
   align-items: center !important;
 }
+
+:host ::ng-deep .mat-mdc-select {
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+
 
 /* Input text vertical alignment */
 :host ::ng-deep .mdc-text-field__input {
@@ -197,4 +206,6 @@ mat-form-field {
   /* Apply transform with high specificity */
   transform: var(--mat-mdc-form-field-label-transform) !important;
 }
+
+
 

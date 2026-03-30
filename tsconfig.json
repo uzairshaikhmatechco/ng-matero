@@ -23,7 +23,9 @@
       "@theme": ["src/app/theme"],
       "@theme/*": ["src/app/theme/*"],
       "@env": ["src/environments"],
-      "@env/*": ["src/environments/*"]
+      "@env/*": ["src/environments/*"],
+      "Wrappers": ["src/Wrappers"],
+      "Wrappers/*": ["src/Wrappers/*"]
     }
   },
   "angularCompilerOptions": {
