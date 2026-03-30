@@ -28,6 +28,7 @@ describe('AuthService', () => {
     tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
 
+    console.log("authService.user()");
     user$ = authService.user();
     authService.change().subscribe(user => {
       expect(user).toBeInstanceOf(Object);

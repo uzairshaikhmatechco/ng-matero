@@ -3,6 +3,7 @@ export interface User {
 
   id?: number | string | null;
   name?: string;
+  username?: string;
   email?: string;
   avatar?: string;
   roles?: any[];
@@ -18,3 +19,5 @@ export interface Token {
   exp?: number;
   refresh_token?: string;
 }
+
+

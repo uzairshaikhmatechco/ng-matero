@@ -22,6 +22,11 @@ export const routes: Routes = [
       { path: '404', component: Error404 },
       { path: '500', component: Error500 },
       {
+        //src\app\routes\adminstudents
+        path: 'adminstudents',
+        loadChildren: () => import('./routes/adminstudents/adminstudents.routes').then(m => m.routes),
+      },
+      {
         path: 'design',
         loadChildren: () => import('./routes/design/design.routes').then(m => m.routes),
       },

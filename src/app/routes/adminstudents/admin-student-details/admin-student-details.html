@@ -1,0 +1,135 @@
+<div class="form-wrapper">
+  <mat-card class="page-card">
+    <h2 class="page-title">Add New Student</h2>
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="student-form">
+
+      <div class="form-grid">
+
+        <!-- Full Name -->
+        <mat-form-field appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName" placeholder="Enter full name" />
+          <mat-error *ngIf="studentForm.get('fullName')?.hasError('required')">
+            Name is required
+          </mat-error>
+          <mat-error *ngIf="studentForm.get('fullName')?.hasError('minlength')">
+            Minimum 3 characters needed
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Student ID -->
+        <mat-form-field appearance="outline">
+          <mat-label>Student ID</mat-label>
+          <input matInput formControlName="studentId" placeholder="Enter ID" />
+          <mat-error>Student ID is required</mat-error>
+        </mat-form-field>
+
+        <!-- Gender -->
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option *ngFor="let g of genders" [value]="g">{{ g }}</mat-option>
+          </mat-select>
+          <mat-error>Gender is required</mat-error>
+        </mat-form-field>
+
+        <!-- DOB -->
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput type="date" formControlName="dob" />
+          <mat-error>DOB is required</mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" />
+          <mat-error>Please enter a valid email</mat-error>
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="tel" formControlName="phone" placeholder="e.g. 9876543210" />
+        </mat-form-field>
+
+        <!-- Nationality -->
+        <mat-form-field appearance="outline">
+          <mat-label>Nationality</mat-label>
+          <mat-select formControlName="nationality">
+            <mat-option *ngFor="let n of nationalities" [value]="n">{{ n }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Department -->
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="department">
+            <mat-option *ngFor="let d of departments" [value]="d">{{ d }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Year -->
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select formControlName="year">
+            <mat-option *ngFor="let y of years" [value]="y">{{ y }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Course -->
+        <mat-form-field appearance="outline">
+          <mat-label>Course</mat-label>
+          <mat-select formControlName="course">
+            <mat-option *ngFor="let c of courses" [value]="c">{{ c }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Searchable Multi-Select -->
+        <mat-form-field appearance="outline" class="multi-select-field">
+          <mat-label>Skills (Multi-select)</mat-label>
+          <mat-select formControlName="skills" multiple>
+
+            <!-- Search box -->
+            <div class="search-box">
+              <mat-icon>search</mat-icon>
+              <input matInput placeholder="Search..." (input)="searchSkills($event)" />
+            </div>
+
+            <!-- Options -->
+            <mat-option *ngFor="let skill of filteredSkills" [value]="skill">
+              {{ skill }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Address -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address</mat-label>
+          <textarea matInput rows="3" formControlName="address"></textarea>
+        </mat-form-field>
+
+        <!-- Guardian Name -->
+        <mat-form-field appearance="outline">
+          <mat-label>Guardian Name</mat-label>
+          <input matInput formControlName="guardianName" />
+        </mat-form-field>
+
+        <!-- Guardian Phone -->
+        <mat-form-field appearance="outline">
+          <mat-label>Guardian Phone Number</mat-label>
+          <input matInput formControlName="guardianPhone" />
+        </mat-form-field>
+
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button mat-stroked-button color="warn" type="button" (click)="onReset()">Reset</button>
+        <button mat-flat-button color="primary" type="submit">Add Student</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
