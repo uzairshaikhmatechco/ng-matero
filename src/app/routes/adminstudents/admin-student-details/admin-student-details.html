@@ -59,7 +59,28 @@
         <mat-form-field appearance="outline">
           <mat-label>Nationality</mat-label>
           <mat-select formControlName="nationality">
-            <mat-option *ngFor="let n of nationalities" [value]="n">{{ n }}</mat-option>
+
+            <!-- Search box for nationality -->
+            <div class="search-box-mutli-select">
+              <mat-icon>search</mat-icon>
+              <input
+                matInput
+                placeholder="Search nationality..."
+                [value]="nationalitySearch"
+                (input)="searchNationalities($event)"
+              />
+              <span
+                class="search-clear"
+                *ngIf="nationalitySearch"
+                (click)="clearNationalitySearch()"
+              >
+                <mat-icon>close</mat-icon>
+              </span>
+            </div>
+
+            <mat-option *ngFor="let n of filteredNationalities" [value]="n">
+              {{ n }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 

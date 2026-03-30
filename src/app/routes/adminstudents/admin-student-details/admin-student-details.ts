@@ -43,7 +43,9 @@ export class AdminStudentDetails implements OnInit {
   ];
 
   skillSearch = '';
+  nationalitySearch = '';
   filteredSkills = [...this.skillList];
+  filteredNationalities = [...this.nationalities];
 
   constructor(private fb: FormBuilder) {}
 
@@ -75,6 +77,17 @@ export class AdminStudentDetails implements OnInit {
   clearSkillSearch() {
     this.skillSearch = '';
     this.filteredSkills = [...this.skillList];
+  }
+
+  searchNationalities(event: any) {
+    this.nationalitySearch = event.target.value;
+    const value = this.nationalitySearch.toLowerCase();
+    this.filteredNationalities = this.nationalities.filter(n => n.toLowerCase().includes(value));
+  }
+
+  clearNationalitySearch() {
+    this.nationalitySearch = '';
+    this.filteredNationalities = [...this.nationalities];
   }
 
   onSubmit(): void {
