@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -41,6 +42,7 @@ export class AdminStudentDetails implements OnInit {
     'Machine Learning', 'UI/UX', 'Cyber Security', 'Cloud Computing'
   ];
 
+  skillSearch = '';
   filteredSkills = [...this.skillList];
 
   constructor(private fb: FormBuilder) {}
@@ -65,8 +67,14 @@ export class AdminStudentDetails implements OnInit {
   }
 
   searchSkills(event: any) {
-    const value = event.target.value.toLowerCase();
+    this.skillSearch = event.target.value;
+    const value = this.skillSearch.toLowerCase();
     this.filteredSkills = this.skillList.filter(s => s.toLowerCase().includes(value));
+  }
+
+  clearSkillSearch() {
+    this.skillSearch = '';
+    this.filteredSkills = [...this.skillList];
   }
 
   onSubmit(): void {

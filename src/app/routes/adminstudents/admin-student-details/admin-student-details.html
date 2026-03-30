@@ -93,9 +93,21 @@
           <mat-select formControlName="skills" multiple>
 
             <!-- Search box -->
-            <div class="search-box">
+            <div class="search-box-mutli-select">
               <mat-icon>search</mat-icon>
-              <input matInput placeholder="Search..." (input)="searchSkills($event)" />
+              <input
+                matInput
+                placeholder="Search..."
+                [value]="skillSearch"
+                (input)="searchSkills($event)"
+              />
+              <span
+                class="search-clear"
+                *ngIf="skillSearch"
+                (click)="clearSkillSearch()"
+              >
+                <mat-icon>close</mat-icon>
+              </span>
             </div>
 
             <!-- Options -->
