@@ -80,3 +80,14 @@
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
+
+
+.mat-mdc-select-trigger {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+}
