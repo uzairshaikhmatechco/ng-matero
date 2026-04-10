@@ -5,3 +5,4 @@ import { AdminStudentDetails } from './admin-student-details/admin-student-detai
 export const routes: Routes = [
   { path: 'adminstudentdetails', component: AdminStudentDetails },
 ];
+

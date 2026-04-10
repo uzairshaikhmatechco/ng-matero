@@ -4,6 +4,7 @@ import { filterObject, isEmptyObject } from './helpers';
 import { User } from './interface';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
+import { de } from 'date-fns/locale';
 
 @Injectable({
   providedIn: 'root',
@@ -55,6 +56,7 @@ export class AuthService {
 }
 
   refresh() {
+    debugger;
     return this.loginService
       .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
       .pipe(

@@ -77,7 +77,9 @@
     "permissions": "Permissions",
     "permissions.role-switching": "Role Switching",
     "permissions.route-guard": "Route Guard",
-    "permissions.test": "Permission Test"
+    "permissions.test": "Permission Test",
+    "students-parent": "Student Parent",
+    "students-parent.students-children": "Student Children"
   },
   "validation": {
     "required": "This field is required",

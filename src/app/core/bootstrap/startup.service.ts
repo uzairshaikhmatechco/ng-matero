@@ -3,6 +3,7 @@ import { AuthService, User } from '@core/authentication';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { switchMap, tap } from 'rxjs';
 import { Menu, MenuService } from './menu.service';
+import { de } from 'date-fns/locale';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class StartupService {
    * such as permissions and roles.
    */
   load() {
+    debugger;
     return new Promise<void>((resolve, reject) => {
       this.authService
         .change()
