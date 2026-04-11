@@ -56,9 +56,13 @@ export class AuthService {
 }
 
   refresh() {
-    debugger;
+
+console.log("Refreshing token... + this.tokenService.getRefreshToken()");
+
     return this.loginService
-      .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
+      .refresh(filterObject({ refreshToken: this.tokenService.getRefreshToken() }) as {
+        refreshToken: string;
+      })
       .pipe(
         catchError(() => of(undefined)),
         tap(token => this.tokenService.set(token)),

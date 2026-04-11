@@ -2,6 +2,7 @@ import { Injectable, OnDestroy, inject } from '@angular/core';
 import { BehaviorSubject, Subject, Subscription, share, timer } from 'rxjs';
 
 import { LocalStorageService } from '@shared';
+import { environment } from '@env/environment';
 import { currentTimestamp, filterObject } from './helpers';
 import { Token } from './interface';
 import { BaseToken } from './token';
@@ -73,8 +74,10 @@ export class TokenService implements OnDestroy {
     if (!token) {
       this.store.remove(this.key);
     } else {
+      const expiresIn = environment.testTokenExpiresInSeconds ?? token.expires_in;
       const value = Object.assign({ access_token: '', token_type: 'Bearer' }, token, {
-        exp: token.expires_in ? currentTimestamp() + token.expires_in : null,
+        expires_in: expiresIn,
+        exp: expiresIn ? currentTimestamp() + expiresIn : null,
       });
       this.store.set(this.key, filterObject(value));
     }

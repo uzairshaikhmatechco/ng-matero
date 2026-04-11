@@ -6,6 +6,14 @@ import { Menu } from '@core';
 import { Token, User } from './interface';
 import { ApiResponse } from 'Wrappers/ApiResponse';
 
+interface AuthTokenResponse {
+  access_Token: string;
+  token_Type: string;
+  expires_In: number;
+  exp: number;
+  refresh_Token: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -21,15 +29,18 @@ export class LoginService {
   }
 
  loginPayload(payload: { Email: string; Password: string; RememberMe: boolean }): Observable<Token> {
-    return this.http.post<ApiResponse<any>>('/api/v1/account/authentication', payload).pipe(
-      map((res: ApiResponse<any>) => {
-        console.log('Login Response:', res);
-        debugger;
+    return this.http
+      .post<ApiResponse<AuthTokenResponse>>('/api/v1/account/authentication', payload)
+      .pipe(
+        map((res: ApiResponse<AuthTokenResponse>) => {
         if (!res.succeeded) {
           throw new Error(res.message || 'Login failed');
         }
 
         const data = res.data;
+        if (!data) {
+          throw new Error('Login response is missing token data');
+        }
 
         const token: Token = {
           access_token: data.access_Token,
@@ -40,13 +51,33 @@ export class LoginService {
         };
 
         return token;
-      })
-    );
+        })
+      );
   }
 
-  refresh(params: Record<string, any>) {
-    debugger;
-    return this.http.post<Token>('/api/v1/account/refresh-token', params);
+  refresh(params: { refreshToken: string }): Observable<Token> {
+    return this.http
+      .post<ApiResponse<AuthTokenResponse>>('/api/v1/account/refresh-token', params)
+      .pipe(
+        map((res: ApiResponse<AuthTokenResponse>) => {
+          if (!res.succeeded) {
+            throw new Error(res.message || 'Refresh failed');
+          }
+
+          const data = res.data;
+          if (!data) {
+            throw new Error('Refresh response is missing token data');
+          }
+
+          return {
+            access_token: data.access_Token,
+            token_type: data.token_Type,
+            expires_in: data.expires_In,
+            exp: data.exp,
+            refresh_token: data.refresh_Token,
+          };
+        })
+      );
   }
 
   logout1() {

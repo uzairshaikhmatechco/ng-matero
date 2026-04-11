@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'https://localhost:7136',
+  testTokenExpiresInSeconds: 10,
   useHash: false,
 };
 
