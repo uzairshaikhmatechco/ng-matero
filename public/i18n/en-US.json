@@ -79,7 +79,9 @@
     "permissions.route-guard": "Route Guard",
     "permissions.test": "Permission Test",
     "students-parent": "Student Parent",
-    "students-parent.students-children": "Student Children"
+    "students-parent.students-children": "Student Children",
+    "admin-students": "Students",
+    "admin-students.student-details": "Student Details"
   },
   "validation": {
     "required": "This field is required",

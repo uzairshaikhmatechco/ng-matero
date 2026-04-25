@@ -24,7 +24,14 @@ export const routes: Routes = [
       {
         //src\app\routes\adminstudents
         path: 'adminstudents',
-        loadChildren: () => import('./routes/adminstudents/adminstudents.routes').then(m => m.routes),
+        loadChildren: () =>
+          import('./routes/adminstudents/adminstudents.routes').then(m => m.routes),
+      },
+      {
+        //src\app\routes\adminstudents
+        path: 'students',
+        loadChildren: () =>
+          import('./routes/admintheme/students/admin-student-list/admin-student.routes').then(m => m.routes),
       },
       {
         path: 'design',
